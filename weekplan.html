@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Ukeplan - Uke 42</title>
+ <style>
+ :root {
+ --primary-color: #1e3a8a;
+ --accent-color: #2563eb;
+ --bg-color: #f8fafc;
+ --card-bg: #ffffff;
+ --text-color: #0f172a;
+ --school-bg: #fef3c7;
+ --school-border: #f59e0b;
+ --bhg-bg: #ecfdf5;
+ --bhg-border: #10b981;
+ --cal-bg: #e0f2fe;
+ --cal-border: #0284c7;
+ --pickup-bg: #f3e8ff;
+ --pickup-border: #a855f7;
+ }
+ * { box-sizing: border-box; }
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+ background-color: var(--bg-color);
+ color: var(--text-color);
+ margin: 0;
+ padding: 10px;
+ line-height: 1.4;
+ }
+ header {
+ text-align: center;
+ background-color: var(--primary-color);
+ color: white;
+ padding: 14px;
+ border-radius: 10px;
+ margin-bottom: 14px;
+ }
+ h1 { margin: 0; font-size: 1.2rem; }
+ p.subtitle { margin: 4px 0 0; font-size: 0.8rem; opacity: 0.9; }
+
+ /* Standard visning */
+ .desktop-view { display: block; }
+ .mobile-view { display: none; }
+
+ @media (max-width: 768px) {
+ .desktop-view { display: none !important; }
+ .mobile-view { display: block !important; }
+ }
+
+ /* Kort-design for mobil */
+ .day-card {
+ background: var(--card-bg);
+ border-radius: 10px;
+ padding: 12px;
+ margin-bottom: 12px;
+ box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+ border-left: 5px solid var(--accent-color);
+ }
+ .day-title {
+ font-size: 1rem;
+ font-weight: bold;
+ color: var(--primary-color);
+ margin: 0 0 8px 0;
+ border-bottom: 1px solid #e2e8f0;
+ padding-bottom: 4px;
+ }
+ .row-header {
+ font-weight: bold;
+ font-size: 0.75rem;
+ text-transform: uppercase;
+ color: var(--primary-color);
+ margin-top: 8px;
+ margin-bottom: 2px;
+ }
+ .cell-box {
+ border-radius: 6px;
+ padding: 6px 8px;
+ font-size: 0.85rem;
+ margin-bottom: 4px;
+ }
+ .school-box { background-color: var(--school-bg); border-left: 3px solid var(--school-border); }
+ .bhg-box { background-color: var(--bhg-bg); border-left: 3px solid var(--bhg-border); }
+ .cal-box { background-color: var(--cal-bg); border-left: 3px solid var(--cal-border); }
+ .pickup-box { background-color: var(--pickup-bg); border-left: 3px solid var(--pickup-border); min-height: 40px; }
+ .empty-text { color: #94a3b8; font-style: italic; font-size: 0.8rem; }
+
+ /* Desktop tabell styling */
+ .plan-table-wrapper { overflow-x: auto; background: white; border-radius: 10px; padding: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+ table.plan-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+ table.plan-table th, table.plan-table td { border: 1px solid #e2e8f0; padding: 8px; vertical-align: top; width: 14.28%; font-size: 0.85rem; }
+ table.plan-table th { background-color: var(--primary-color); color: white; text-align: center; }
+
+ .sources-footer { margin-top: 14px; background: white; padding: 12px; border-radius: 10px; font-size: 0.8rem; }
+ .sources-footer ul { margin: 0; padding-left: 18px; }
+ .sources-footer a { color: var(--accent-color); text-decoration: none; }
+ </style>
+</head>
+<body>
+
+ <header>
+ <h1>Ukeplan - Uke 42</h1>
+ <p class="subtitle">Skole, Barnehage, Kalender & Levering (12.–18. okt 2026)</p>
+ </header>
+
+ <!-- MOBILVISNING (Kortbasert, vises automatisk på små skjermer) -->
+ <div class="mobile-view">
+ 
+ <!-- Mandag -->
+ <div class="day-card">
+ <div class="day-title">Mandag 12/10</div>
+ <div class="row-header">🎒 Skole</div>
+ <div class="cell-box school-box">Husk innesko.</div>
+ <div class="row-header">🧸 Barnehage</div>
+ <div class="cell-box bhg-box">Samlingsstund FORUT-aksjonen</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• 18:30: Maria riding</div>
+ <div class="row-header">🚗 Lev. / Henting</div>
+ <div class="cell-box pickup-box"></div>
+ </div>
+
+ <!-- Tirsdag -->
+ <div class="day-card">
+ <div class="day-title">Tirsdag 13/10</div>
+ <div class="row-header">🎒 Skole</div>
+ <div class="cell-box school-box">
+ <strong>Gym:</strong> Ledige klær & sko som sitter fast på foten.<br><br>
+ <strong>Lurt å gjøre:</strong> Matte-ark, gangetabell, oppstilling.
+ </div>
+ <div class="row-header">🧸 Barnehage</div>
+ <div class="cell-box bhg-box">Tirsdagssuppe & bevegelse til musikk. Formingsgrupper.</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• 14:30: Sanna riding<br>• 17:00: Ellie ballett<br>• 20:00: Øivind fotball</div>
+ <div class="row-header">🚗 Lev. / Henting</div>
+ <div class="cell-box pickup-box"></div>
+ </div>
+
+ <!-- Onsdag -->
+ <div class="day-card">
+ <div class="day-title">Onsdag 14/10</div>
+ <div class="row-header">🎒 Skole</div>
+ <div class="cell-box school-box">Husk innesko.</div>
+ <div class="row-header">🧸 Barnehage</div>
+ <div class="cell-box bhg-box">Stjerneklubb kl. 10:00–11:00</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• 19:30: Maria riding</div>
+ <div class="row-header">🚗 Lev. / Henting</div>
+ <div class="cell-box pickup-box"></div>
+ </div>
+
+ <!-- Torsdag -->
+ <div class="day-card">
+ <div class="day-title">Torsdag 15/10</div>
+ <div class="row-header">🎒 Skole</div>
+ <div class="cell-box school-box">
+ <strong>Lurt å gjøre:</strong> Matte (brøk & regnearter, oppstilling over/under hverandre).
+ </div>
+ <div class="row-header">🧸 Barnehage</div>
+ <div class="cell-box bhg-box"><strong>Turdag</strong> (To grupper)</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• 14:30 - 15:30: Vennegruppe Fabian<br>• 15:30: Sanna riding<br>• 20:00: Øivind tennis</div>
+ <div class="row-header">🚗 Lev. / Henting</div>
+ <div class="cell-box pickup-box"></div>
+ </div>
+
+ <!-- Fredag -->
+ <div class="day-card">
+ <div class="day-title">Fredag 16/10</div>
+ <div class="row-header">🎒 Skole</div>
+ <div class="cell-box school-box"><strong>Skolejogg!</strong> Running/treningstøy.</div>
+ <div class="row-header">🧸 Barnehage</div>
+ <div class="cell-box bhg-box">Varmmat & Fredagsdisco</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• 16:00: Feire bryllupsdag ❤️<br>• Jentene til RA8, overnatte</div>
+ <div class="row-header">🚗 Lev. / Henting</div>
+ <div class="cell-box pickup-box"></div>
+ </div>
+
+ <!-- Lørdag -->
+ <div class="day-card">
+ <div class="day-title">Lørdag 17/10</div>
+ <div class="row-header">📅 Kalender</div>
+ <div class="cell-box cal-box">• Jentene til RA8 overnatting pågår</div>
+ </div>
+
+ <!-- Søndag -->
+ <div class="day-card">
+ <div class="day-title">Søndag 18/10</div>
+ <span class="empty-text">Ingen faste hendelser oppført.</span>
+ </div>
+
+ </div>
+
+ <!-- KILDER / FOOTER -->
+ <div class="sources-footer">
+ <strong>Kilder for ukeplanen:</strong>
+ <ul>
+ <li>Skole (Læringsplan 5. trinn): <a href="https://drive.google.com/file/d/1qyfGBxldp9cC_zOGrw2ArMQ7HE48Tzyh/view?usp=drivesdk" target="_blank">Læringsplan uke 41 og 42 (1).pdf</a>[cite: 1.2]</li>
+ <li>Barnehage (Periodeplan Blåmeis): <a href="https://drive.google.com/file/d/1CvK_kcnyol2J9lYxX8Ta_IlXslkAH0C-/view?usp=drivesdk" target="_blank">Periodeplan oktober og november 2026 - Blåmeis.pdf</a>[cite: 1.2]</li>
+ </ul>
+ </div>
+
+</body>
+</html>
