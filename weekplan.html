@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ukeplan - Uke 48 (23.–29. november 2026)</title>
+  <title>Ukeplan - Uke 48 (Thanksgiving-utgave)</title>
   <style>
     :root {
-      --primary-color: #1e3a8a;
-      --accent-color: #2563eb;
-      --bg-color: #f8fafc;
+      /* Thanksgiving / Høstfarger */
+      --primary-color: #7c2d12;       /* Dyp brent terracotta / kastanje */
+      --primary-dark: #431407;        /* Mørk mahogni */
+      --accent-color: #d97706;        /* Varm gresskar-rav */
+      --gold-highlight: #fef08a;      /* Gyllen mais */
+      --bg-color: #fdf8f5;            /* Varm kremhvit bakgrunn */
       --card-bg: #ffffff;
-      --text-color: #0f172a;
-      --school-bg: #fef3c7;
-      --school-border: #f59e0b;
-      --bhg-bg: #ecfdf5;
-      --bhg-border: #10b981;
-      --cal-bg: #e0f2fe;
-      --cal-border: #0284c7;
-      --pickup-bg: #f3e8ff;
-      --pickup-border: #a855f7;
-      --dinner-bg: #ffe4e6;
-      --dinner-border: #f43f5e;
+      --text-color: #292524;          /* Varm koksgrå tekst */
+      
+      /* Kategorifarger tilpasset høst/Thanksgiving */
+      --school-bg: #fef3c7;           /* Gyllen mais-gul */
+      --school-border: #d97706;
+      --bhg-bg: #ecfccb;              /* Salvie- og høstløvgrønn */
+      --bhg-border: #65a30d;
+      --cal-bg: #ffedd5;              /* Varm gresskaroransje */
+      --cal-border: #ea580c;
+      --pickup-bg: #fae8ff;           /* Plomme / tranebær */
+      --pickup-border: #a21caf;
+      --dinner-bg: #ffe4e6;           /* Tranebærsaus-rød */
+      --dinner-border: #be123c;
     }
 
     * {
@@ -30,31 +35,51 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-color);
+      background-image: radial-gradient(#fed7aa 0.75px, transparent 0.75px), radial-gradient(#fed7aa 0.75px, #fdf8f5 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
       color: var(--text-color);
       margin: 0;
-      padding: 12px;
-      line-height: 1.4;
+      padding: 14px;
+      line-height: 1.45;
     }
 
     header {
       text-align: center;
-      background-color: var(--primary-color);
-      color: white;
-      padding: 16px 12px;
-      border-radius: 10px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #b45309 100%);
+      color: #fffbeb;
+      padding: 20px 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 12px rgba(124, 45, 18, 0.2);
+      border-bottom: 4px solid #f59e0b;
+      position: relative;
+    }
+
+    .theme-banner {
+      display: inline-block;
+      background-color: rgba(255, 251, 235, 0.18);
+      border: 1px solid rgba(253, 230, 138, 0.5);
+      color: #fde68a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      margin-bottom: 6px;
     }
 
     h1 {
       margin: 0;
-      font-size: 1.35rem;
+      font-size: 1.5rem;
+      letter-spacing: 0.3px;
     }
 
     p.subtitle {
-      margin: 4px 0 0;
-      font-size: 0.85rem;
-      opacity: 0.9;
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      color: #fed7aa;
     }
 
     /* Desktop tabell-visning */
@@ -78,9 +103,10 @@
     .plan-table-wrapper {
       overflow-x: auto;
       background: var(--card-bg);
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 4px 10px rgba(124, 45, 18, 0.08);
+      border: 1px solid #fed7aa;
     }
 
     table.plan-table {
@@ -91,27 +117,34 @@
 
     table.plan-table th,
     table.plan-table td {
-      border: 1px solid #cbd5e1;
-      padding: 8px;
+      border: 1px solid #fed7aa;
+      padding: 9px;
       vertical-align: top;
       font-size: 0.82rem;
     }
 
     table.plan-table th {
       background-color: var(--primary-color);
-      color: white;
+      color: #fffbeb;
       text-align: center;
       width: 13%;
+      font-size: 0.88rem;
+    }
+
+    table.plan-table th.thanksgiving-day {
+      background: linear-gradient(180deg, #b45309 0%, #9a3412 100%);
+      color: #fef08a;
+      border-bottom: 3px solid #f59e0b;
     }
 
     table.plan-table th.row-label-header {
       width: 9%;
-      background-color: #0f172a;
+      background-color: var(--primary-dark);
     }
 
     td.row-label {
       font-weight: 700;
-      background-color: #f1f5f9;
+      background-color: #fff7ed;
       color: var(--primary-color);
       font-size: 0.8rem;
     }
@@ -121,7 +154,7 @@
     .cell-cal { background-color: var(--cal-bg); }
     .cell-pickup { background-color: var(--pickup-bg); }
     .cell-dinner { background-color: var(--dinner-bg); }
-    .cell-na { background-color: #f8fafc; color: #94a3b8; text-align: center; font-style: italic; }
+    .cell-na { background-color: #fafaf9; color: #a8a29e; text-align: center; font-style: italic; }
 
     ul.cell-list {
       margin: 0;
@@ -134,40 +167,58 @@
 
     .badge-time {
       display: inline-block;
-      background-color: #1e3a8a;
-      color: #ffffff;
+      background-color: #9a3412;
+      color: #fffbeb;
       font-size: 0.72rem;
       font-weight: 600;
-      padding: 2px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
       margin-bottom: 5px;
     }
 
     .dinner-tag {
       display: inline-block;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       color: #9f1239;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 2px;
     }
 
     /* Mobil kort-visning */
     .day-card {
       background: var(--card-bg);
-      border-radius: 10px;
-      padding: 12px;
+      border-radius: 12px;
+      padding: 14px;
       margin-bottom: 14px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-      border-left: 5px solid var(--accent-color);
+      box-shadow: 0 2px 6px rgba(124, 45, 18, 0.08);
+      border: 1px solid #fed7aa;
+      border-left: 6px solid var(--accent-color);
+    }
+
+    .day-card.thanksgiving-card {
+      border-left: 6px solid #be123c;
+      background-color: #fffaf5;
     }
 
     .day-title {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       font-weight: bold;
       color: var(--primary-color);
       margin: 0 0 8px 0;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 4px;
+      border-bottom: 1px solid #fed7aa;
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tg-pill {
+      background-color: #fef3c7;
+      color: #9a3412;
+      border: 1px solid #f59e0b;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 12px;
     }
 
     .mobile-row-header {
@@ -175,13 +226,13 @@
       font-size: 0.74rem;
       text-transform: uppercase;
       color: var(--primary-color);
-      margin-top: 8px;
+      margin-top: 9px;
       margin-bottom: 3px;
     }
 
     .mobile-box {
       border-radius: 6px;
-      padding: 7px 9px;
+      padding: 8px 10px;
       font-size: 0.85rem;
       margin-bottom: 4px;
     }
@@ -192,20 +243,15 @@
     .m-pickup { background-color: var(--pickup-bg); border-left: 3px solid var(--pickup-border); }
     .m-dinner { background-color: var(--dinner-bg); border-left: 3px solid var(--dinner-border); }
 
-    .empty-text {
-      color: #64748b;
-      font-style: italic;
-      font-size: 0.8rem;
-    }
-
     /* Kilder i bunn */
     .sources-footer {
-      margin-top: 16px;
+      margin-top: 18px;
       background: var(--card-bg);
-      padding: 12px 16px;
-      border-radius: 10px;
+      padding: 14px 16px;
+      border-radius: 12px;
       font-size: 0.82rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 6px rgba(124, 45, 18, 0.08);
+      border: 1px solid #fed7aa;
     }
 
     .sources-footer strong {
@@ -222,9 +268,9 @@
     }
 
     .sources-footer a {
-      color: var(--accent-color);
+      color: #b45309;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     .sources-footer a:hover {
@@ -235,6 +281,7 @@
 <body>
 
   <header>
+    <div class="theme-banner">🍂 Høst &amp; Thanksgiving-uke 🦃</div>
     <h1>Ukeplan – Uke 48</h1>
     <p class="subtitle">Mandag 23. november – Søndag 29. november 2026</p>
   </header>
@@ -246,13 +293,13 @@
         <thead>
           <tr>
             <th class="row-label-header">Kategori</th>
-            <th>Mandag 23/11</th>
-            <th>Tirsdag 24/11</th>
-            <th>Onsdag 25/11</th>
-            <th>Torsdag 26/11</th>
-            <th>Fredag 27/11</th>
-            <th>Lørdag 28/11</th>
-            <th>Søndag 29/11</th>
+            <th>🍁 Mandag 23/11</th>
+            <th>🌾 Tirsdag 24/11</th>
+            <th>🎃 Onsdag 25/11</th>
+            <th class="thanksgiving-day">🦃 Torsdag 26/11<br><small>Thanksgiving Day</small></th>
+            <th>🥧 Fredag 27/11</th>
+            <th>🕯️ Lørdag 28/11</th>
+            <th>🍂 Søndag 29/11</th>
           </tr>
         </thead>
         <tbody>
@@ -396,7 +443,7 @@
             <td class="cell-na">–</td>
           </tr>
 
-          <!-- RAD 5: MIDDAG (FORSLAG) -->
+          <!-- RAD 5: MIDDAG (FORSLAG MED HØST/THANKSGIVING-PREG) -->
           <tr>
             <td class="row-label">🍽️ Middag</td>
             <td class="cell-dinner">
@@ -405,15 +452,15 @@
             </td>
             <td class="cell-dinner">
               <span class="dinner-tag">Forslag:</span><br>
-              Wok med kyllingstrimler, grønnsaker og fullkornsnudler
-            </td>
-            <td class="cell-dinner">
-              <span class="dinner-tag">Forslag:</span><br>
-              Kremet tomatsuppe med egg og grovt rundstykke
+              Kremet gresskar- og gulrotsuppe med ferskt brød
             </td>
             <td class="cell-dinner">
               <span class="dinner-tag">Forslag:</span><br>
               Fiskekaker i grovt pitabrød med råkost og rømmedressing
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">🦃 Thanksgiving-forslag:</span><br>
+              Safty kalkunbryst med søtpotetmos, rosenkål og tyttebær/tranebær
             </td>
             <td class="cell-dinner">
               <span class="dinner-tag">Forslag:</span><br>
@@ -421,7 +468,7 @@
             </td>
             <td class="cell-dinner">
               <span class="dinner-tag">Forslag:</span><br>
-              Bakt søtpotet med krydret bønneragu og avokado
+              Bakt søtpotet med krydret bønneragu, mais og avokado
             </td>
             <td class="cell-dinner">
               <span class="dinner-tag">Forslag:</span><br>
@@ -438,7 +485,7 @@
 
     <!-- Mandag -->
     <div class="day-card">
-      <div class="day-title">Mandag 23. november</div>
+      <div class="day-title">🍁 Mandag 23. november</div>
       <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
       <div class="mobile-box m-school">
         • Husk innesko på skolen.<br>
@@ -462,7 +509,7 @@
 
     <!-- Tirsdag -->
     <div class="day-card">
-      <div class="day-title">Tirsdag 24. november</div>
+      <div class="day-title">🌾 Tirsdag 24. november</div>
       <div class="mobile-row-header">🎒 Skole (Sluttid: 13:30)</div>
       <div class="mobile-box m-school">
         • <strong>Gym:</strong> Ledige klær og sko som sitter fast på foten (husk dusjing).<br>
@@ -484,12 +531,12 @@
       <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
       <div class="mobile-box m-pickup">Øivind levere, Maria hente (Øivind kjøre til ballett)</div>
       <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
-      <div class="mobile-box m-dinner">Wok med kyllingstrimler, grønnsaker og fullkornsnudler</div>
+      <div class="mobile-box m-dinner">Kremet gresskar- og gulrotsuppe med ferskt brød</div>
     </div>
 
     <!-- Onsdag -->
     <div class="day-card">
-      <div class="day-title">Onsdag 25. november</div>
+      <div class="day-title">🎃 Onsdag 25. november</div>
       <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
       <div class="mobile-box m-school">
         • <strong>Reier'n for 5.–7. trinn</strong> (6. trinn arrangerer).<br>
@@ -507,12 +554,15 @@
       <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
       <div class="mobile-box m-pickup">Øivind levere og hente</div>
       <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
-      <div class="mobile-box m-dinner">Kremet tomatsuppe med egg og grovt rundstykke</div>
+      <div class="mobile-box m-dinner">Fiskekaker i grovt pitabrød med råkost og rømmedressing</div>
     </div>
 
     <!-- Torsdag -->
-    <div class="day-card">
-      <div class="day-title">Torsdag 26. november</div>
+    <div class="day-card thanksgiving-card">
+      <div class="day-title">
+        <span>🦃 Torsdag 26. november</span>
+        <span class="tg-pill">Thanksgiving Day</span>
+      </div>
       <div class="mobile-row-header">🎒 Skole (Sluttid: 13:30)</div>
       <div class="mobile-box m-school">
         • <strong>Lekser / lurt å gjøre:</strong> Matte (brøk og de fire regneartene, oppstilling), øve engelsk (se engelskspråklig program), touch-øving på Skooler.
@@ -530,13 +580,13 @@
       </div>
       <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
       <div class="mobile-box m-pickup">Øivind levere, Maria hente</div>
-      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
-      <div class="mobile-box m-dinner">Fiskekaker i grovt pitabrød med råkost og rømmedressing</div>
+      <div class="mobile-row-header">🍽️ Middag (Thanksgiving-forslag)</div>
+      <div class="mobile-box m-dinner">Saftig kalkunbryst med søtpotetmos, rosenkål og tranebær/tyttebær</div>
     </div>
 
     <!-- Fredag -->
     <div class="day-card">
-      <div class="day-title">Fredag 27. november</div>
+      <div class="day-title">🥧 Fredag 27. november</div>
       <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
       <div class="mobile-box m-school">
         • Husk innesko og godt utetøy (Fysak 20 min).
@@ -558,19 +608,19 @@
 
     <!-- Lørdag -->
     <div class="day-card">
-      <div class="day-title">Lørdag 28. november</div>
+      <div class="day-title">🕯️ Lørdag 28. november</div>
       <div class="mobile-row-header">📅 Kalender</div>
       <div class="mobile-box m-cal">
         • <strong>Hele dagen:</strong> Maria Julebord<br>
         • Øivind og jentene på Hafjell
       </div>
       <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
-      <div class="mobile-box m-dinner">Bakt søtpotet med krydret bønneragu og avokado</div>
+      <div class="mobile-box m-dinner">Bakt søtpotet med krydret bønneragu, mais og avokado</div>
     </div>
 
     <!-- Søndag -->
     <div class="day-card">
-      <div class="day-title">Søndag 29. november</div>
+      <div class="day-title">🍂 Søndag 29. november</div>
       <div class="mobile-row-header">📅 Kalender</div>
       <div class="mobile-box m-cal">
         • <strong>Til 09:00:</strong> Øivind og jentene på Hafjell
