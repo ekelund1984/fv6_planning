@@ -1,415 +1,594 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ukeplan - Uke 47</title>
-    <style>
-        :root {
-            --primary-color: #1e3a8a;
-            --accent-color: #2563eb;
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-color: #0f172a;
-            --school-bg: #fef3c7;
-            --school-border: #f59e0b;
-            --bhg-bg: #ecfdf5;
-            --bhg-border: #10b981;
-            --cal-bg: #e0f2fe;
-            --cal-border: #0284c7;
-            --pickup-bg: #f3e8ff;
-            --pickup-border: #a855f7;
-            --dinner-bg: #fff1f2;
-            --dinner-border: #f43f5e;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukeplan - Uke 48 (23.–29. november 2026)</title>
+  <style>
+    :root {
+      --primary-color: #1e3a8a;
+      --accent-color: #2563eb;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-color: #0f172a;
+      --school-bg: #fef3c7;
+      --school-border: #f59e0b;
+      --bhg-bg: #ecfdf5;
+      --bhg-border: #10b981;
+      --cal-bg: #e0f2fe;
+      --cal-border: #0284c7;
+      --pickup-bg: #f3e8ff;
+      --pickup-border: #a855f7;
+      --dinner-bg: #ffe4e6;
+      --dinner-border: #f43f5e;
+    }
 
-        * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 12px;
-            line-height: 1.4;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 12px;
+      line-height: 1.4;
+    }
 
-        header {
-            text-align: center;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+    header {
+      text-align: center;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 16px 12px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 { margin: 0; font-size: 1.3rem; }
-        p.subtitle { margin: 4px 0 0; font-size: 0.85rem; opacity: 0.9; }
+    h1 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
 
-        /* Desktop horisontal tabellvisning */
-        .plan-table-wrapper {
-            overflow-x: auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            padding: 8px;
-            margin-bottom: 20px;
-        }
+    p.subtitle {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
 
-        table.plan-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 950px;
-        }
+    /* Desktop tabell-visning */
+    .desktop-view {
+      display: block;
+    }
 
-        table.plan-table th, table.plan-table td {
-            border: 1px solid #e2e8f0;
-            padding: 10px;
-            vertical-align: top;
-            width: 14.28%;
-        }
+    .mobile-view {
+      display: none;
+    }
 
-        table.plan-table th {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            font-size: 0.9rem;
-        }
+    @media (max-width: 820px) {
+      .desktop-view {
+        display: none !important;
+      }
+      .mobile-view {
+        display: block !important;
+      }
+    }
 
-        .row-header {
-            font-weight: bold;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            color: #475569;
-        }
+    .plan-table-wrapper {
+      overflow-x: auto;
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
 
-        .cell-box {
-            border-radius: 6px;
-            padding: 8px;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-        }
+    table.plan-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1050px;
+    }
 
-        .school-box { background-color: var(--school-bg); border-left: 4px solid var(--school-border); }
-        .bhg-box { background-color: var(--bhg-bg); border-left: 4px solid var(--bhg-border); }
-        .cal-box { background-color: var(--cal-bg); border-left: 4px solid var(--cal-border); }
-        .pickup-box { background-color: var(--pickup-bg); border-left: 4px solid var(--pickup-border); }
-        .dinner-box { background-color: var(--dinner-bg); border-left: 4px solid var(--dinner-border); }
+    table.plan-table th,
+    table.plan-table td {
+      border: 1px solid #cbd5e1;
+      padding: 8px;
+      vertical-align: top;
+      font-size: 0.82rem;
+    }
 
-        .empty-text { color: #94a3b8; font-style: italic; font-size: 0.8rem; }
+    table.plan-table th {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      width: 13%;
+    }
 
-        /* Mobilanpasset kortvisning */
-        .mobile-cards { display: none; }
+    table.plan-table th.row-label-header {
+      width: 9%;
+      background-color: #0f172a;
+    }
 
-        @media (max-width: 768px) {
-            .plan-table-wrapper { display: none; }
-            .mobile-cards { display: flex; flex-direction: column; gap: 14px; }
-            .day-card { background: white; border-radius: 12px; padding: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.06); }
-            .day-title { font-size: 1.1rem; font-weight: bold; color: var(--primary-color); margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #e2e8f0; padding-bottom: 4px; }
-            .cell-box { font-size: 0.9rem; padding: 10px; }
-        }
+    td.row-label {
+      font-weight: 700;
+      background-color: #f1f5f9;
+      color: var(--primary-color);
+      font-size: 0.8rem;
+    }
 
-        .sources-footer {
-            text-align: center;
-            font-size: 0.85rem;
-            padding: 12px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .sources-footer a { color: var(--accent-color); text-decoration: none; margin: 0 10px; }
-        .sources-footer a:hover { text-decoration: underline; }
-    </style>
+    .cell-school { background-color: var(--school-bg); }
+    .cell-bhg { background-color: var(--bhg-bg); }
+    .cell-cal { background-color: var(--cal-bg); }
+    .cell-pickup { background-color: var(--pickup-bg); }
+    .cell-dinner { background-color: var(--dinner-bg); }
+    .cell-na { background-color: #f8fafc; color: #94a3b8; text-align: center; font-style: italic; }
+
+    ul.cell-list {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    ul.cell-list li {
+      margin-bottom: 4px;
+    }
+
+    .badge-time {
+      display: inline-block;
+      background-color: #1e3a8a;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+
+    .dinner-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: #9f1239;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* Mobil kort-visning */
+    .day-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .day-title {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin: 0 0 8px 0;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+
+    .mobile-row-header {
+      font-weight: bold;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      color: var(--primary-color);
+      margin-top: 8px;
+      margin-bottom: 3px;
+    }
+
+    .mobile-box {
+      border-radius: 6px;
+      padding: 7px 9px;
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .m-school { background-color: var(--school-bg); border-left: 3px solid var(--school-border); }
+    .m-bhg { background-color: var(--bhg-bg); border-left: 3px solid var(--bhg-border); }
+    .m-cal { background-color: var(--cal-bg); border-left: 3px solid var(--cal-border); }
+    .m-pickup { background-color: var(--pickup-bg); border-left: 3px solid var(--pickup-border); }
+    .m-dinner { background-color: var(--dinner-bg); border-left: 3px solid var(--dinner-border); }
+
+    .empty-text {
+      color: #64748b;
+      font-style: italic;
+      font-size: 0.8rem;
+    }
+
+    /* Kilder i bunn */
+    .sources-footer {
+      margin-top: 16px;
+      background: var(--card-bg);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .sources-footer strong {
+      color: var(--primary-color);
+    }
+
+    .sources-footer ul {
+      margin: 6px 0 0;
+      padding-left: 18px;
+    }
+
+    .sources-footer li {
+      margin-bottom: 4px;
+    }
+
+    .sources-footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .sources-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <h1>Ukeplan - Uke 47</h1>
-        <p class="subtitle">Skole, Barnehage (Blåmeis), Familiekalender, Levering/Henting & Middag (16.–22. november 2026)</p>
-    </header>
+  <header>
+    <h1>Ukeplan – Uke 48</h1>
+    <p class="subtitle">Mandag 23. november – Søndag 29. november 2026</p>
+  </header>
 
-    <!-- DESKTOP / UTSKRIFT: HORISONTAL TABELL -->
+  <!-- DESKTOP VISNING (Horisontal uketabell) -->
+  <div class="desktop-view">
     <div class="plan-table-wrapper">
-        <table class="plan-table">
-            <thead>
-                <tr>
-                    <th>Mandag 16/11</th>
-                    <th>Tirsdag 17/11</th>
-                    <th>Onsdag 18/11</th>
-                    <th>Torsdag 19/11</th>
-                    <th>Fredag 20/11</th>
-                    <th>Lørdag 21/11</th>
-                    <th>Søndag 22/11</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- SKOLE -->
-                <tr>
-                    <td>
-                        <div class="row-header">🎒 Skole</div>
-                        <div class="cell-box school-box">
-                            • <strong>Fadderlek ute:</strong> Ekstra viktig med regntøy (det skal regne)!<br>
-                            • Husk innesko, varme klær, lue, votter og ekstra skift.<br>
-                            • Sjekk gjenglemmekassen & merk klær/sko.
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🎒 Skole</div>
-                        <div class="cell-box school-box">
-                            • <strong>Gym:</strong> Ledige klær & sko som sitter fast (oppfordres til dusjing).<br>
-                            <strong>Lurt å gjøre (Lekser):</strong><br>
-                            • Matte-ark, gangetabell, pluss/minus oppstilling.<br>
-                            • Snakk om klokka (analog/digital).
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🎒 Skole</div>
-                        <div class="cell-box school-box">
-                            • Husk innesko og klær etter vær.
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🎒 Skole</div>
-                        <div class="cell-box school-box">
-                            • <strong>Planleggingsdag – Skolen er stengt!</strong><br>
-                            <strong>Lurt å gjøre (Lekser):</strong><br>
-                            • Engelsk: Se engelskspråklige program.<br>
-                            • Norsk: Øv 10–15 min på touch-metoden på PC.
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🎒 Skole</div>
-                        <div class="cell-box school-box">
-                            • Sjekk lue, votter og skift i sekken. God helg!
-                        </div>
-                    </td>
-                    <td><div class="row-header">🎒 Skole</div><span class="empty-text">-</span></td>
-                    <td><div class="row-header">🎒 Skole</div><span class="empty-text">-</span></td>
-                </tr>
+      <table class="plan-table">
+        <thead>
+          <tr>
+            <th class="row-label-header">Kategori</th>
+            <th>Mandag 23/11</th>
+            <th>Tirsdag 24/11</th>
+            <th>Onsdag 25/11</th>
+            <th>Torsdag 26/11</th>
+            <th>Fredag 27/11</th>
+            <th>Lørdag 28/11</th>
+            <th>Søndag 29/11</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- RAD 1: SKOLE -->
+          <tr>
+            <td class="row-label">🎒 Skole</td>
+            <td class="cell-school">
+              <span class="badge-time">Sluttid: 14:45</span>
+              <ul class="cell-list">
+                <li>Husk innesko på skolen.</li>
+                <li>Sjekk varme klær, lue, votter, regntøy og ekstra skift i garderoben (merk klær/sko med navn).</li>
+              </ul>
+            </td>
+            <td class="cell-school">
+              <span class="badge-time">Sluttid: 13:30</span>
+              <ul class="cell-list">
+                <li><strong>Gym:</strong> Ledige klær og sko som sitter fast på foten (husk dusjing).</li>
+                <li><strong>Lekser / lurt å gjøre:</strong> Matte-ark, gangetabell, oppstilling med pluss/minus, klokka (analog/digital), touch-metoden på Skooler (10–15 min).</li>
+              </ul>
+            </td>
+            <td class="cell-school">
+              <span class="badge-time">Sluttid: 14:45</span>
+              <ul class="cell-list">
+                <li><strong>Reier'n for 5.–7. trinn</strong> (6. trinn arrangerer).</li>
+                <li>Husk innesko.</li>
+              </ul>
+            </td>
+            <td class="cell-school">
+              <span class="badge-time">Sluttid: 13:30</span>
+              <ul class="cell-list">
+                <li><strong>Lekser / lurt å gjøre:</strong> Matte (brøk og de fire regneartene, oppstilling), øve engelsk (se engelskspråklig program), touch-øving på Skooler.</li>
+              </ul>
+            </td>
+            <td class="cell-school">
+              <span class="badge-time">Sluttid: 14:45</span>
+              <ul class="cell-list">
+                <li>Husk innesko og godt utetøy (Fysak 20 min).</li>
+              </ul>
+            </td>
+            <td class="cell-na">Fri</td>
+            <td class="cell-na">Fri</td>
+          </tr>
 
-                <!-- BARNEHAGE (BLÅMEIS) -->
-                <tr>
-                    <td>
-                        <div class="row-header">🌱 Barnehage</div>
-                        <div class="cell-box bhg-box">• Felles tid ute.</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🌱 Barnehage</div>
-                        <div class="cell-box bhg-box">
-                            • Tirsdagsuppe og bevegelse til musikk.<br>
-                            • Lesegruppe & språkgruppe.
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🌱 Barnehage</div>
-                        <div class="cell-box bhg-box">• Stjerneklubb kl. 10–11.</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🌱 Barnehage</div>
-                        <div class="cell-box bhg-box">
-                            • <strong>PLANDAG – Barnehagen er stengt.</strong>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">🌱 Barnehage</div>
-                        <div class="cell-box bhg-box">
-                            • Varmmat – matgrupper.<br>
-                            • Fredagsdisco.<br>
-                            • SU-møte kl. 15:30.
-                        </div>
-                    </td>
-                    <td><div class="row-header">🌱 Barnehage</div><span class="empty-text">-</span></td>
-                    <td><div class="row-header">🌱 Barnehage</div><span class="empty-text">-</span></td>
-                </tr>
+          <!-- RAD 2: BARNEHAGE -->
+          <tr>
+            <td class="row-label">🧸 Barnehage</td>
+            <td class="cell-bhg">
+              <ul class="cell-list">
+                <li><strong>Løvene (kl. 09–11):</strong> Bake pepperkakehjerter til kalender.</li>
+                <li>Husk varme klær, lue, votter og skiftetøy.</li>
+              </ul>
+            </td>
+            <td class="cell-bhg">
+              <ul class="cell-list">
+                <li>Tirsdagssuppe og bevegelse til musikk.</li>
+                <li>Lesegruppe &amp; språkgruppe.</li>
+              </ul>
+            </td>
+            <td class="cell-bhg">
+              <ul class="cell-list">
+                <li><strong>Stjerneklubb (kl. 09–11):</strong> Bake pepperkakehjerter til kalender.</li>
+              </ul>
+            </td>
+            <td class="cell-bhg">
+              <ul class="cell-list">
+                <li><strong>Turdag</strong> (to grupper) – husk turklær/sekk.</li>
+              </ul>
+            </td>
+            <td class="cell-bhg">
+              <ul class="cell-list">
+                <li>Varmmat – matgrupper (Kylling med pesto og fullkornspasta).</li>
+                <li>Fredagsdisco.</li>
+              </ul>
+            </td>
+            <td class="cell-na">Stengt</td>
+            <td class="cell-na">Stengt</td>
+          </tr>
 
-                <!-- FAMILIEKALENDER OG FASTE AVTALER -->
-                <tr>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • 18:30: Maria riding
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • 14:30: Sanna riding<br>
-                            • 17:00: Ellie ballett<br>
-                            • 20:00: Øivind fotball<br>
-                            • 20:00–21:00: FAU-møte (hos naboen)
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • 19:30: Maria riding
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • Plandag bhg<br>
-                            • Jentene til RA8<br>
-                            • Mitsubishi på service<br>
-                            • 15:30: Sanna riding<br>
-                            • 19:40–20:45: Kanonball turnering (Reier skole)<br>
-                            • 20:00: Øivind tennis
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • Elektriker kommer
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <div class="cell-box cal-box">
-                            • Jentene til Våler<br>
-                            • Skalldyraften med Gina og Andreas
-                        </div>
-                    </td>
-                    <td>
-                        <div class="row-header">📅 Kalender & Avtaler</div>
-                        <span class="empty-text">-</span>
-                    </td>
-                </tr>
+          <!-- RAD 3: FAMILIEKALENDER & FASTE AVTALER -->
+          <tr>
+            <td class="row-label">📅 Kalender &amp; Faste</td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>16:00–17:00:</strong> Mille være med hjem</li>
+                <li><strong>18:30:</strong> Maria riding</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>Hele dagen:</strong> Montering bokhylle</li>
+                <li><strong>14:30:</strong> Sanna riding</li>
+                <li><strong>17:00:</strong> Ellie ballett</li>
+                <li><strong>20:00:</strong> Øivind fotball</li>
+                <li><strong>20:10–22:15:</strong> Trening for herrer (Reier skole)</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>17:30–19:00:</strong> Reiern</li>
+                <li><strong>19:30:</strong> Maria riding</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>Hele dagen:</strong> Bil på verksted</li>
+                <li><strong>15:30:</strong> Sanna riding</li>
+                <li><strong>18:00–19:00:</strong> Vennegruppe Julie</li>
+                <li><strong>20:00:</strong> Øivind tennis</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>Fra 08:00:</strong> Øivind og jentene på Hafjell (varer til søn 09:00)</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>Hele dagen:</strong> Maria Julebord</li>
+                <li>Øivind og jentene på Hafjell</li>
+              </ul>
+            </td>
+            <td class="cell-cal">
+              <ul class="cell-list">
+                <li><strong>Til 09:00:</strong> Øivind og jentene på Hafjell</li>
+              </ul>
+            </td>
+          </tr>
 
-                <!-- LEVERING OG HENTING -->
-                <tr>
-                    <td>
-                        <div class="row-header">🚗 Lev. / Henting</div>
-                        <div class="cell-box pickup-box">Øivind hente og levere</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🚗 Lev. / Henting</div>
-                        <div class="cell-box pickup-box">Maria levere og hente</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🚗 Lev. / Henting</div>
-                        <div class="cell-box pickup-box">Øivind levere, Maria hente</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🚗 Lev. / Henting</div>
-                        <div class="cell-box pickup-box">Øivind levere, Maria hente</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🚗 Lev. / Henting</div>
-                        <div class="cell-box pickup-box">Maria levere, Øivind hente</div>
-                    </td>
-                    <td><div class="row-header">🚗 Lev. / Henting</div><span class="empty-text">-</span></td>
-                    <td><div class="row-header">🚗 Lev. / Henting</div><span class="empty-text">-</span></td>
-                </tr>
+          <!-- RAD 4: LEVERING OG HENTING -->
+          <tr>
+            <td class="row-label">🚗 Levering &amp; Henting</td>
+            <td class="cell-pickup">Maria levere og hente</td>
+            <td class="cell-pickup">
+              Øivind levere, Maria hente<br>
+              <em>(Øivind kjøre til ballett)</em>
+            </td>
+            <td class="cell-pickup">Øivind levere og hente</td>
+            <td class="cell-pickup">Øivind levere, Maria hente</td>
+            <td class="cell-pickup">Maria levere, Øivind hente</td>
+            <td class="cell-na">–</td>
+            <td class="cell-na">–</td>
+          </tr>
 
-                <!-- MIDDAG -->
-                <tr>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Kebab</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Kylling</div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Laks med ovnsbakte grønnsaker og ris <em>(forslag)</em></div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Kremet fullkornspasta med skinke og erter <em>(forslag)</em></div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Fisketaco med mangosalat <em>(forslag)</em></div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Hjemmelaget grov pizza <em>(forslag)</em></div>
-                    </td>
-                    <td>
-                        <div class="row-header">🍲 Middag</div>
-                        <div class="cell-box dinner-box">Wok med biffstrimler og nudler <em>(forslag)</em></div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+          <!-- RAD 5: MIDDAG (FORSLAG) -->
+          <tr>
+            <td class="row-label">🍽️ Middag</td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Laks i form med brokkoli, gulrøtter og fullkornsris
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Wok med kyllingstrimler, grønnsaker og fullkornsnudler
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Kremet tomatsuppe med egg og grovt rundstykke
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Fiskekaker i grovt pitabrød med råkost og rømmedressing
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Hjemmelaget grov fredagstaco med kyllingkjøttdeig
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Bakt søtpotet med krydret bønneragu og avokado
+            </td>
+            <td class="cell-dinner">
+              <span class="dinner-tag">Forslag:</span><br>
+              Torskeloins med ertestuing, poteter og sprøstekt bacon
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MOBIL VISNING (Kort per dag) -->
+  <div class="mobile-view">
+
+    <!-- Mandag -->
+    <div class="day-card">
+      <div class="day-title">Mandag 23. november</div>
+      <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
+      <div class="mobile-box m-school">
+        • Husk innesko på skolen.<br>
+        • Sjekk varme klær, lue, votter, regntøy og ekstra skift i garderoben (merk klær/sko).
+      </div>
+      <div class="mobile-row-header">🧸 Barnehage</div>
+      <div class="mobile-box m-bhg">
+        • <strong>Løvene (kl. 09–11):</strong> Bake pepperkakehjerter til kalender.<br>
+        • Husk varme klær, lue, votter og skiftetøy.
+      </div>
+      <div class="mobile-row-header">📅 Kalender &amp; Faste avtaler</div>
+      <div class="mobile-box m-cal">
+        • <strong>16:00–17:00:</strong> Mille være med hjem<br>
+        • <strong>18:30:</strong> Maria riding
+      </div>
+      <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
+      <div class="mobile-box m-pickup">Maria levere og hente</div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Laks i form med brokkoli, gulrøtter og fullkornsris</div>
     </div>
 
-    <!-- MOBIL / KORTVISNING -->
-    <div class="mobile-cards">
-        <!-- Mandag -->
-        <div class="day-card">
-            <div class="day-title">Mandag 16/11</div>
-            <div class="row-header">🎒 Skole</div><div class="cell-box school-box"><strong>Fadderlek ute:</strong> Husk regntøy! Innesko, varme klær/skift. Sjekk gjenglemmekassen & merk klær/sko.</div>
-            <div class="row-header">🌱 Barnehage</div><div class="cell-box bhg-box">Felles tid ute.</div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• 18:30: Maria riding</div>
-            <div class="row-header">🚗 Lev / Hent</div><div class="cell-box pickup-box">Øivind hente og levere</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Kebab</div>
-        </div>
-        <!-- Tirsdag -->
-        <div class="day-card">
-            <div class="day-title">Tirsdag 17/11</div>
-            <div class="row-header">🎒 Skole</div><div class="cell-box school-box"><strong>Gym:</strong> Ledige klær & sko (oppfordres til dusjing).<br><strong>Lekser:</strong> Matte-ark, gangetabell, pluss/minus, klokka.</div>
-            <div class="row-header">🌱 Barnehage</div><div class="cell-box bhg-box">Tirsdagsuppe og bevegelse til musikk. Lesegruppe & språkgruppe.</div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• 14:30: Sanna riding<br>• 17:00: Ellie ballett<br>• 20:00: Øivind fotball<br>• 20:00–21:00: FAU-møte (hos naboen)</div>
-            <div class="row-header">🚗 Lev / Hent</div><div class="cell-box pickup-box">Maria levere og hente</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Kylling</div>
-        </div>
-        <!-- Onsdag -->
-        <div class="day-card">
-            <div class="day-title">Onsdag 18/11</div>
-            <div class="row-header">🎒 Skole</div><div class="cell-box school-box">Husk innesko og klær etter vær.</div>
-            <div class="row-header">🌱 Barnehage</div><div class="cell-box bhg-box">Stjerneklubb kl. 10–11.</div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• 19:30: Maria riding</div>
-            <div class="row-header">🚗 Lev / Hent</div><div class="cell-box pickup-box">Øivind levere, Maria hente</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Laks med ovnsbakte grønnsaker og ris <em>(forslag)</em></div>
-        </div>
-        <!-- Torsdag -->
-        <div class="day-card">
-            <div class="day-title">Torsdag 19/11</div>
-            <div class="row-header">🎒 Skole</div><div class="cell-box school-box"><strong>Planleggingsdag – Skolen er stengt!</strong><br><strong>Lekser:</strong> Engelsk TV, norsk touch-metode (10–15 min).</div>
-            <div class="row-header">🌱 Barnehage</div><div class="cell-box bhg-box"><strong>PLANDAG – Barnehagen er stengt.</strong></div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• Plandag bhg<br>• Jentene til RA8<br>• Mitsubishi på service<br>• 15:30: Sanna riding<br>• 19:40–20:45: Kanonball turnering (Reier skole)<br>• 20:00: Øivind tennis</div>
-            <div class="row-header">🚗 Lev / Hent</div><div class="cell-box pickup-box">Øivind levere, Maria hente</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Kremet fullkornspasta med skinke og erter <em>(forslag)</em></div>
-        </div>
-        <!-- Fredag -->
-        <div class="day-card">
-            <div class="day-title">Fredag 20/11</div>
-            <div class="row-header">🎒 Skole</div><div class="cell-box school-box">Sjekk lue, votter og skift. God helg!</div>
-            <div class="row-header">🌱 Barnehage</div><div class="cell-box bhg-box">Varmmat – matgrupper. Fredagsdisco. SU-møte kl. 15:30.</div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• Elektriker kommer</div>
-            <div class="row-header">🚗 Lev / Hent</div><div class="cell-box pickup-box">Maria levere, Øivind hente</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Fisketaco med mangosalat <em>(forslag)</em></div>
-        </div>
-        <!-- Lørdag -->
-        <div class="day-card">
-            <div class="day-title">Lørdag 21/11</div>
-            <div class="row-header">📅 Kalender</div><div class="cell-box cal-box">• Jentene til Våler<br>• Skalldyraften med Gina og Andreas</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Hjemmelaget grov pizza <em>(forslag)</em></div>
-        </div>
-        <!-- Søndag -->
-        <div class="day-card">
-            <div class="day-title">Søndag 22/11</div>
-            <div class="row-header">🍲 Middag</div><div class="cell-box dinner-box">Wok med biffstrimler og nudler <em>(forslag)</em></div>
-        </div>
+    <!-- Tirsdag -->
+    <div class="day-card">
+      <div class="day-title">Tirsdag 24. november</div>
+      <div class="mobile-row-header">🎒 Skole (Sluttid: 13:30)</div>
+      <div class="mobile-box m-school">
+        • <strong>Gym:</strong> Ledige klær og sko som sitter fast på foten (husk dusjing).<br>
+        • <strong>Lekser / lurt å gjøre:</strong> Matte-ark, gangetabell, oppstilling med pluss/minus, klokka (analog/digital), touch-øving på Skooler.
+      </div>
+      <div class="mobile-row-header">🧸 Barnehage</div>
+      <div class="mobile-box m-bhg">
+        • Tirsdagssuppe og bevegelse til musikk.<br>
+        • Lesegruppe &amp; språkgruppe.
+      </div>
+      <div class="mobile-row-header">📅 Kalender &amp; Faste avtaler</div>
+      <div class="mobile-box m-cal">
+        • <strong>Hele dagen:</strong> Montering bokhylle<br>
+        • <strong>14:30:</strong> Sanna riding<br>
+        • <strong>17:00:</strong> Ellie ballett<br>
+        • <strong>20:00:</strong> Øivind fotball<br>
+        • <strong>20:10–22:15:</strong> Trening for herrer (Reier skole)
+      </div>
+      <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
+      <div class="mobile-box m-pickup">Øivind levere, Maria hente (Øivind kjøre til ballett)</div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Wok med kyllingstrimler, grønnsaker og fullkornsnudler</div>
     </div>
 
-    <!-- LINKER TIL KILDER -->
-    <div class="sources-footer">
-        <p><strong>Lenker til brukte kilder på Google Disk:</strong></p>
-        <ul>
-            <li><a href="https://drive.google.com/file/d/1DNpEbqzWiSW4s78PjoAQIYdE-GWmQpii/view?usp=drivesdk" target="_blank">Skole - Læringsplan uke 47 og 48</a></li>
-            <li><a href="https://drive.google.com/file/d/1CvK_kcnyol2J9lYxX8Ta_IlXslkAH0C-/view?usp=drivesdk" target="_blank">Barnehage - Periodeplan oktober og november 2026 (Blåmeis)</a></li>
-        </ul>
+    <!-- Onsdag -->
+    <div class="day-card">
+      <div class="day-title">Onsdag 25. november</div>
+      <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
+      <div class="mobile-box m-school">
+        • <strong>Reier'n for 5.–7. trinn</strong> (6. trinn arrangerer).<br>
+        • Husk innesko.
+      </div>
+      <div class="mobile-row-header">🧸 Barnehage</div>
+      <div class="mobile-box m-bhg">
+        • <strong>Stjerneklubb (kl. 09–11):</strong> Bake pepperkakehjerter til kalender.
+      </div>
+      <div class="mobile-row-header">📅 Kalender &amp; Faste avtaler</div>
+      <div class="mobile-box m-cal">
+        • <strong>17:30–19:00:</strong> Reiern<br>
+        • <strong>19:30:</strong> Maria riding
+      </div>
+      <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
+      <div class="mobile-box m-pickup">Øivind levere og hente</div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Kremet tomatsuppe med egg og grovt rundstykke</div>
     </div>
+
+    <!-- Torsdag -->
+    <div class="day-card">
+      <div class="day-title">Torsdag 26. november</div>
+      <div class="mobile-row-header">🎒 Skole (Sluttid: 13:30)</div>
+      <div class="mobile-box m-school">
+        • <strong>Lekser / lurt å gjøre:</strong> Matte (brøk og de fire regneartene, oppstilling), øve engelsk (se engelskspråklig program), touch-øving på Skooler.
+      </div>
+      <div class="mobile-row-header">🧸 Barnehage</div>
+      <div class="mobile-box m-bhg">
+        • <strong>Turdag</strong> (to grupper) – husk turklær/sekk.
+      </div>
+      <div class="mobile-row-header">📅 Kalender &amp; Faste avtaler</div>
+      <div class="mobile-box m-cal">
+        • <strong>Hele dagen:</strong> Bil på verksted<br>
+        • <strong>15:30:</strong> Sanna riding<br>
+        • <strong>18:00–19:00:</strong> Vennegruppe Julie<br>
+        • <strong>20:00:</strong> Øivind tennis
+      </div>
+      <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
+      <div class="mobile-box m-pickup">Øivind levere, Maria hente</div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Fiskekaker i grovt pitabrød med råkost og rømmedressing</div>
+    </div>
+
+    <!-- Fredag -->
+    <div class="day-card">
+      <div class="day-title">Fredag 27. november</div>
+      <div class="mobile-row-header">🎒 Skole (Sluttid: 14:45)</div>
+      <div class="mobile-box m-school">
+        • Husk innesko og godt utetøy (Fysak 20 min).
+      </div>
+      <div class="mobile-row-header">🧸 Barnehage</div>
+      <div class="mobile-box m-bhg">
+        • Varmmat – matgrupper (Kylling med pesto og fullkornspasta).<br>
+        • Fredagsdisco.
+      </div>
+      <div class="mobile-row-header">📅 Kalender &amp; Faste avtaler</div>
+      <div class="mobile-box m-cal">
+        • <strong>Fra 08:00:</strong> Øivind og jentene på Hafjell (varer til søndag 09:00)
+      </div>
+      <div class="mobile-row-header">🚗 Levering &amp; Henting</div>
+      <div class="mobile-box m-pickup">Maria levere, Øivind hente</div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Hjemmelaget grov fredagstaco med kyllingkjøttdeig</div>
+    </div>
+
+    <!-- Lørdag -->
+    <div class="day-card">
+      <div class="day-title">Lørdag 28. november</div>
+      <div class="mobile-row-header">📅 Kalender</div>
+      <div class="mobile-box m-cal">
+        • <strong>Hele dagen:</strong> Maria Julebord<br>
+        • Øivind og jentene på Hafjell
+      </div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Bakt søtpotet med krydret bønneragu og avokado</div>
+    </div>
+
+    <!-- Søndag -->
+    <div class="day-card">
+      <div class="day-title">Søndag 29. november</div>
+      <div class="mobile-row-header">📅 Kalender</div>
+      <div class="mobile-box m-cal">
+        • <strong>Til 09:00:</strong> Øivind og jentene på Hafjell
+      </div>
+      <div class="mobile-row-header">🍽️ Middag (Forslag)</div>
+      <div class="mobile-box m-dinner">Torskeloins med ertestuing, poteter og sprøstekt bacon</div>
+    </div>
+
+  </div>
+
+  <!-- KILDELENKER -->
+  <footer class="sources-footer">
+    <strong>Kildedokumenter brukt for uke 48:</strong>
+    <ul>
+      <li>Skole ukeplan: <a href="https://drive.google.com/file/d/1DNpEbqzWiSW4s78PjoAQIYdE-GWmQpii/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Læringsplan for 5. trinn uke 47 og 48 (PDF)</a></li>
+      <li>Barnehage periodeplan: <a href="https://drive.google.com/file/d/1CvK_kcnyol2J9lYxX8Ta_IlXslkAH0C-/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Periodeplan oktober og november 2026 – Blåmeis (PDF)</a></li>
+    </ul>
+  </footer>
 
 </body>
 </html>
